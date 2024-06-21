@@ -4,24 +4,14 @@
       <h1>Hello, {{ title }}</h1>
     </div>
     <div>
-        <dx-list
-        height="100%"
-        [dataSource]="secondaryRoute()"
-        [grouped]="true"
-        [collapsibleGroups]="true"
-      >
-        <div *dxTemplate="let item of 'group'">
-          <div>{{ item.key }}
-          </div>
-        </div>
-        <div *dxTemplate="let item of 'item'">
-          <div
-            routerLink="/{{ item.path }}/{{ item.path }}/{{ item.path }}"
-            [routerLinkActive]="['active']"
-            [routerLinkActiveOptions]="{ exact: true }">{{ item.text }}
-          </div>
-        </div>
-      </dx-list>
+      <li *ngFor="let route of secondaryRoute()">
+        <a
+          routerLink="/{{route.path}}"
+          [routerLinkActive]="['active']"
+        >
+          <div>{{route.title}}</div>
+        </a>
+      </li>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
 
